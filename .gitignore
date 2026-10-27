@@ -1,0 +1,26 @@
+# Dependencias y builds
+node_modules/
+dist/
+.vite/
+coverage/
+*.log
+
+# Secretos: nunca al repo
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Supabase local
+supabase/.temp/
+supabase/.branches/
+
+# Sistema / editor
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+
+# Claude Code (configuración personal y sesiones)
+.claude/settings.local.json
+.claude/plans/
