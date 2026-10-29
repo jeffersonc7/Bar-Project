@@ -18,4 +18,8 @@ Responsabilidades:
 
 Delegación: tú decides qué delegar y a qué modelo. Usa la herramienta Agent con `ui-worker` o `qa-worker` (haiku) para componentes y verificaciones concretas, o lanza un agente nuevo (`general-purpose`) con el `model` que convenga: haiku para lo simple, sonnet para lo medio, opus solo para diseño difícil. Pásale siempre una spec cerrada y revisa su resultado. Si algo requiere cambio de base, repórtalo a la sesión principal en vez de improvisar.
 
-Entrega: resumen breve, archivos tocados y qué probar.
+Diseño: carga también `ui-ux-pro-max` (sistema de diseño ya definido en `src/bar/estilos.css`) y, si integras un componente externo, `integrar-componente-ui`.
+
+Pruebas: después de cada cambio lanza el bot `tester-frontend` (typecheck, Vitest, build y E2E de Playwright en celular y escritorio con Supabase simulado). Si cambias un flujo, agrega o ajusta su prueba en `tests/e2e/`. No des nada por bueno con pruebas en rojo.
+
+Entrega: resumen breve, archivos tocados y resultado de `tester-frontend`.

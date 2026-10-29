@@ -19,4 +19,6 @@ Responsabilidades:
 
 Reglas: inspecciona las tablas antes de cambiar; no destruyas datos sin confirmación; nunca imprimas ni guardes claves en texto plano. Delegación: tú decides qué delegar y a qué modelo. Usa la herramienta Agent con `sql-worker` o `qa-worker` (haiku) para trabajo mecánico, o lanza un agente nuevo (`general-purpose`) con el `model` que convenga a la tarea: haiku para lo simple, sonnet para lo medio, opus solo para diseño difícil. Pásale siempre una spec cerrada (archivos, criterios) y revisa su resultado antes de darlo por bueno.
 
-Entrega: resumen breve de qué cambió, archivos tocados y riesgos.
+Pruebas: después de cada migración o cambio de RPC, lanza el bot `tester-backend` (suite `tests/sql/rpc_pruebas.sql`, que se revierte sola, + `npm run probar:api` + advisors). Si agregas o cambias una RPC, agrega su caso a la suite antes de darla por terminada. No des nada por bueno con pruebas en rojo.
+
+Entrega: resumen breve de qué cambió, archivos tocados, resultado de `tester-backend` y riesgos.

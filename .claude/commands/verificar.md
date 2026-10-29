@@ -1,10 +1,13 @@
 ---
-description: Corre tests, lint, typecheck y build y reporta el resultado sin maquillar
+description: Lanza los bots de pruebas (frontend y backend) y reporta el resultado sin maquillar
 ---
 
-Usa el agente `qa-worker` para ejecutar, si existen en `package.json`, estos scripts: `typecheck`, `lint`, `test`, `build`.
+Lanza en paralelo los dos bots de pruebas y espera sus reportes:
 
-- Reporta cada uno como OK o FALLA con el error exacto y archivo/línea.
-- Si un script no existe o no se pudo correr, dilo explícitamente.
-- No corrijas nada ni hagas commit; solo informa y propón los siguientes pasos.
-- Si existen pruebas SQL en `tests/`, indícame cómo correrlas contra Supabase (no las apliques a producción).
+- `tester-frontend`: typecheck, Vitest, build y E2E de Playwright (celular y escritorio, Supabase simulado).
+- `tester-backend`: suite SQL `tests/sql/rpc_pruebas.sql` (se revierte sola), `npm run probar:api` y advisors de Supabase.
+
+Luego resume en una tabla: área, comando, OK/FALLA, detalle. Para cada fallo, el mensaje exacto y el archivo/línea o la prueba afectada.
+
+- No corrijas nada ni hagas commit; solo informa y propone los siguientes pasos.
+- Si un bot no pudo correr un paso, dilo explícitamente.
