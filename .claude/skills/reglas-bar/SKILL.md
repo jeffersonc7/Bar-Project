@@ -10,8 +10,8 @@ Fuente completa: `docs/especificacion-formulario.md`. Resumen de lo que no se ro
 3. El saldo no se guarda: se calcula (`v_caja`). Anulados no cuentan para caja ni dashboard, pero se ven en el historial.
 4. Categorías son lista cerrada; la descripción es texto libre.
 5. Nadie borra movimientos: se anulan por RPC con clave de admin y motivo obligatorio.
-6. El cliente no escribe en tablas: solo RPC que verifica la clave del bar (hash en `ajustes`). `anon` sin acceso directo.
+6. El cliente no escribe en tablas: solo RPC que verifica la clave del bar (hash en `ajustes`). `anon` sin acceso directo a tablas. Leer el panel es público (`panel_publico`, decisión del usuario 27-oct-2026); registrar y anular piden clave.
 7. Offline: IndexedDB + `id_cliente` UUID único para que un reenvío no duplique.
 8. Un cierre de caja por día (`unique (fecha)`); si hay diferencia, nota obligatoria.
 9. Moneda USD; todo es efectivo; sin método de pago.
-10. Pendientes sin decidir: categoría Refrigerio (¿una o separada?) y quién es admin; pregunta antes de asumir.
+10. Decidido: Refrigerio es una sola categoría; hay una sola clave de admin (hash en `ajustes`).

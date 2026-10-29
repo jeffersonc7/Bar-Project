@@ -85,9 +85,9 @@ Sin campo de método de pago.
 - El formulario avisa si el día anterior quedó sin cierre.
 - Si la diferencia no es 0, pedir una nota de explicación antes de guardar.
 
-## Pendiente de decidir
+## Decisiones tomadas
 
-- ¿Refrigerio como una categoría o separado (pan / pasteles / colas)?
-- ¿Quién es admin (puede anular)?
+- **Refrigerio:** una sola categoría; el detalle (pan, pasteles, colas) va en la descripción.
+- **Admin:** una sola clave de admin, distinta de la del bar, que conoce solo la persona encargada. Se guarda como hash en `ajustes` (`clave_admin_hash`).
 
 Descartado por ahora: foto de la factura.
