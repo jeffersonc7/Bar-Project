@@ -1,0 +1,168 @@
+@import "tailwindcss";
+
+/*
+ * Tema blanco, sobrio: interfaz en blanco y negro, color solo para los datos.
+ * Títulos en serif editorial (Newsreader); interfaz y cifras en IBM Plex Sans.
+ */
+@theme inline {
+  --color-paper: var(--paper);
+  --color-sheet: var(--sheet);
+  --color-suave: var(--suave);
+  --color-grid: var(--grid);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-pen: var(--pen);
+  --color-pen-soft: var(--pen-soft);
+  --color-on-pen: var(--on-pen);
+  --color-accion: var(--accion);
+  --color-on-accion: var(--on-accion);
+  --color-acento: var(--acento);
+  --color-salida: var(--salida);
+  --color-salida-suave: var(--salida-suave);
+  --color-margen: var(--margen);
+  --color-line: var(--line);
+  --color-ok: var(--ok);
+  --color-alerta: var(--alerta);
+  --font-sans: "IBM Plex Sans Variable", "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-serif: "Newsreader Variable", "Newsreader", Georgia, "Times New Roman", serif;
+}
+
+:root {
+  color-scheme: light;
+  --paper: #ffffff;
+  --sheet: #ffffff;
+  --suave: #f4f4f2;
+  --grid: #efeeec;
+  --ink: #1c1917;
+  --ink-2: #57534e;
+  --muted: #78716c;
+  --pen: #047857;
+  --pen-soft: #ecfdf5;
+  --on-pen: #ffffff;
+  --accion: #047857;
+  --on-accion: #ffffff;
+  --acento: #047857;
+  --salida: #b91c1c;
+  --salida-suave: #fef2f2;
+  --margen: #e7e5e4;
+  --line: #e7e5e4;
+  --ok: #15803d;
+  --alerta: #b45309;
+}
+
+html {
+  background: var(--paper);
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Todo lo que se puede tocar muestra la mano (Tailwind v4 deja el cursor por defecto en botones). */
+button:not(:disabled),
+[role="button"]:not([aria-disabled="true"]),
+summary,
+select,
+label:has(> input[type="radio"]),
+label:has(> input[type="checkbox"]) {
+  cursor: pointer;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+  touch-action: manipulation;
+}
+
+/* Lista con columna de fecha a la izquierda (separada por una línea fina). */
+.hoja {
+  position: relative;
+  background: var(--sheet);
+}
+.hoja::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 3.25rem;
+  width: 1px;
+  background: var(--margen);
+  pointer-events: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.cifras {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Fila de chips con desplazamiento horizontal sin barra visible (celular). */
+.sin-barra {
+  scrollbar-width: none;
+}
+.sin-barra::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .desliza-izq[open] {
+    animation: desliza-izq 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .desliza-der[open] {
+    animation: desliza-der 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  @keyframes desliza-izq {
+    from {
+      transform: translateX(24px);
+      opacity: 0;
+    }
+  }
+  @keyframes desliza-der {
+    from {
+      transform: translateX(-24px);
+      opacity: 0;
+    }
+  }
+  .sube {
+    animation: sube 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  @keyframes sube {
+    from {
+      transform: translateY(16px);
+      opacity: 0;
+    }
+    to {
+      transform: none;
+      opacity: 1;
+    }
+  }
+  .aparece {
+    animation: aparece 200ms ease-out;
+  }
+  @keyframes aparece {
+    from {
+      opacity: 0;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

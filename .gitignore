@@ -24,3 +24,8 @@ supabase/.branches/
 # Claude Code (configuración personal y sesiones)
 .claude/settings.local.json
 .claude/plans/
+
+# Pruebas E2E (Playwright)
+test-results/
+playwright-report/
+blob-report/
